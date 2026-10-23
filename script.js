@@ -1,94 +1,76 @@
-// Открытие и закрытие мобильного меню
-const menuToggle = document.querySelector(".menu-toggle");
-const mainNav = document.querySelector(".main-nav");
-
-if (menuToggle && mainNav) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = mainNav.classList.toggle("is-open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-    menuToggle.setAttribute(
-      "aria-label",
-      isOpen ? "Закрыть меню" : "Открыть меню"
-    );
+// Понятные интерактивные элементы для учебного проекта SkyWay
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".current-year").forEach(function (element) {
+    element.textContent = new Date().getFullYear();
   });
 
-  // На телефоне меню закрывается после выбора раздела
-  mainNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      mainNav.classList.remove("is-open");
-      menuToggle.setAttribute("aria-expanded", "false");
-      menuToggle.setAttribute("aria-label", "Открыть меню");
+  const menuButton = document.querySelector(".menu-toggle");
+  const navigation = document.querySelector(".main-nav");
+  if (menuButton && navigation) {
+    menuButton.addEventListener("click", function () {
+      const isOpen = navigation.classList.toggle("is-open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.textContent = isOpen ? "Закрыть" : "Меню";
     });
-  });
-}
+    navigation.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navigation.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.textContent = "Меню";
+      });
+    });
+  }
 
-// Подстановка сегодняшней даты как минимальной даты вылета
-const dateInput = document.querySelector('input[name="date"]');
+  const dateInput = document.querySelector("#flight-date");
+  if (dateInput) {
+    const now = new Date();
+    const today = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+    dateInput.min = today;
+    dateInput.value = today;
+  }
 
-if (dateInput) {
-  const today = new Date();
-  const localDate = new Date(
-    today.getTime() - today.getTimezoneOffset() * 60000
-  )
-    .toISOString()
-    .slice(0, 10);
+  const fromCity = document.querySelector("#from-city");
+  const toCity = document.querySelector("#to-city");
+  const swapButton = document.querySelector("#swap-cities");
+  if (fromCity && toCity && swapButton) {
+    swapButton.addEventListener("click", function () {
+      const previousCity = fromCity.value;
+      fromCity.value = toCity.value;
+      toCity.value = previousCity;
+    });
+  }
 
-  dateInput.min = localDate;
-}
+  const flightForm = document.querySelector("#flight-form");
+  const flightMessage = document.querySelector("#flight-message");
+  if (flightForm && flightMessage) {
+    flightForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (fromCity.value === toCity.value) {
+        flightMessage.textContent = "Выберите разные города отправления и прибытия.";
+        return;
+      }
+      flightMessage.textContent = "Демонстрационный поиск: " + fromCity.value + " → " + toCity.value +
+        ". Реальное бронирование на учебном сайте недоступно.";
+    });
+  }
 
-// Кнопка меняет местами выбранные города
-const swapButton = document.querySelector("#swap-cities");
-const citySelects = document.querySelectorAll(
-  '.flight-form select[name="from"], .flight-form select[name="to"]'
-);
+  const newsletterForm = document.querySelector("#newsletter-form");
+  const newsletterMessage = document.querySelector("#newsletter-message");
+  if (newsletterForm && newsletterMessage) {
+    newsletterForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      newsletterMessage.textContent = "Спасибо! Это демонстрационная форма: данные не отправлены.";
+      newsletterForm.reset();
+    });
+  }
 
-if (swapButton && citySelects.length === 2) {
-  swapButton.addEventListener("click", () => {
-    const firstCity = citySelects[0].value;
-    citySelects[0].value = citySelects[1].value;
-    citySelects[1].value = firstCity;
-  });
-}
-
-// Поиск рейса работает как демонстрация и не обращается к серверу
-const flightForm = document.querySelector("#flight-form");
-const flightMessage = document.querySelector("#flight-message");
-
-if (flightForm && flightMessage) {
-  flightForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(flightForm);
-    const from = formData.get("from");
-    const to = formData.get("to");
-    const date = formData.get("date");
-    const passengers = formData.get("passengers");
-
-    if (from === to) {
-      flightMessage.textContent =
-        "Выберите разные города отправления и прибытия.";
-      return;
-    }
-
-    const formattedDate = new Date(`${date}T12:00:00`).toLocaleDateString(
-      "ru-RU",
-      { day: "numeric", month: "long", year: "numeric" }
-    );
-
-    flightMessage.textContent =
-      `Демо-поиск: ${from} → ${to}, ${formattedDate}, пассажиров: ${passengers}. Реальное бронирование недоступно.`;
-  });
-}
-
-// Форма подписки показывает сообщение, но не отправляет данные
-const newsletterForm = document.querySelector("#newsletter-form");
-const newsletterMessage = document.querySelector("#newsletter-message");
-
-if (newsletterForm && newsletterMessage) {
-  newsletterForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    newsletterMessage.textContent =
-      "Спасибо! Это демонстрация: адрес электронной почты не сохранён.";
-    newsletterForm.reset();
-  });
-}
+  const contactForm = document.querySelector("#contact-form");
+  const contactMessage = document.querySelector("#contact-form-message");
+  if (contactForm && contactMessage) {
+    contactForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      contactMessage.textContent = "Форма проверена! Сообщение не отправлено на сервер.";
+      contactForm.reset();
+    });
+  }
+});

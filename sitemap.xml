@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Замени YOUR-USERNAME на имя своего GitHub-пользователя после публикации -->
-  <url>
-    <loc>https://YOUR-USERNAME.github.io/skyway-airline/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://YOUR-USERNAME.github.io/skyway-airline/</loc></url>
+  <url><loc>https://YOUR-USERNAME.github.io/skyway-airline/destinations.html</loc></url>
+  <url><loc>https://YOUR-USERNAME.github.io/skyway-airline/about.html</loc></url>
+  <url><loc>https://YOUR-USERNAME.github.io/skyway-airline/contacts.html</loc></url>
 </urlset>

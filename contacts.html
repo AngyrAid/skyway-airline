@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Контактная страница учебного проекта SkyWay с демонстрационной формой и частыми вопросами.">
+    <meta name="theme-color" content="#0b1f3a">
+    <title>Контакты — SkyWay</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html"><span class="logo-mark">✈</span>Sky<span
+                    class="logo-accent">Way</span></a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Меню</button>
+            <nav class="main-nav" id="main-nav" aria-label="Основная навигация">
+                <a href="index.html">Главная</a><a href="destinations.html">Направления</a><a href="about.html">О
+                    компании</a><a class="active" href="contacts.html">Контакты</a>
+            </nav>
+            <a class="header-button" href="index.html#flight-search">Найти рейс</a>
+        </div>
+    </header>
+    <main>
+        <section class="page-hero contact-hero">
+            <div class="container">
+                <p class="eyebrow">МЫ НА СВЯЗИ</p>
+                <h1>Контакты</h1>
+                <p>Есть вопрос или идея? Напишите через демонстрационную форму ниже.</p>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container contact-layout">
+                <div>
+                    <p class="eyebrow">ОБРАТНАЯ СВЯЗЬ</p>
+                    <h2>Давайте обсудим вашу идею</h2>
+                    <p>SkyWay — учебный проект, поэтому контактные данные демонстрационные. Сообщения не отправляются на
+                        реальный сервер.</p>
+                    <div class="contact-item"><strong>Электронная почта</strong>
+                        <p>hello@skyway.example</p>
+                    </div>
+                    <div class="notice-box"><strong>Обратите внимание</strong>
+                        <p>Не вводите личные или платёжные данные. Форма нужна только для показа интерфейса.</p>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <h2>Написать сообщение</h2><label for="contact-name">Ваше имя</label><input id="contact-name"
+                        name="name" type="text" placeholder="Как к вам обращаться" required minlength="2"><label
+                        for="contact-email">Электронная почта</label><input id="contact-email" name="email" type="email"
+                        placeholder="name@example.com" required><label for="contact-topic">Тема обращения</label><select
+                        id="contact-topic">
+                        <option>Вопрос о направлении</option>
+                        <option>Предложение</option>
+                        <option>Вопрос о сайте</option>
+                        <option>Другое</option>
+                    </select><label for="contact-message">Сообщение</label><textarea id="contact-message" rows="5"
+                        placeholder="Напишите сообщение" required minlength="10"></textarea><label
+                        class="consent-label"><input type="checkbox" required> Я понимаю, что это демонстрационная
+                        форма.</label><button class="button button-primary" type="submit">Отправить сообщение</button>
+                    <p class="form-message" id="contact-form-message" role="status"></p>
+                </form>
+            </div>
+        </section>
+        <section class="section section-soft">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">ПОЛЕЗНАЯ ИНФОРМАЦИЯ</p>
+                    <h2>Частые вопросы</h2>
+                </div>
+                <div class="faq-list">
+                    <details>
+                        <summary>Можно ли купить билет?</summary>
+                        <p>Нет. SkyWay — вымышленная авиакомпания, поиск рейса демонстрационный.</p>
+                    </details>
+                    <details>
+                        <summary>Отправляются ли сообщения из формы?</summary>
+                        <p>Нет. JavaScript показывает сообщение на странице, данные не отправляются на сервер.</p>
+                    </details>
+                    <details>
+                        <summary>Где посмотреть города?</summary>
+                        <p>Откройте страницу «Направления» в верхнем меню.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-inner"><a class="logo footer-logo" href="index.html">✈ Sky<span
+                    class="logo-accent">Way</span></a>
+            <p>Учебный проект. Цены и формы демонстрационные.</p>
+            <div class="footer-links"><a href="index.html">Главная</a><a href="destinations.html">Направления</a><a
+                    href="about.html">О компании</a><a href="contacts.html">Контакты</a></div><small>© <span
+                    class="current-year"></span> SkyWay</small>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# После публикации замени адрес ниже на настоящий адрес своего сайта
+Sitemap: https://YOUR-USERNAME.github.io/skyway-airline/sitemap.xml
